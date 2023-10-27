@@ -1,0 +1,90 @@
+
+// In this file we create the class 'Dog'
+
+public class Dog {
+
+
+
+    //              ----------------------------------------------------------------------------------
+                            // at the beginning we define the attributes
+    private String name;
+    private String race;
+    private String color;
+    private String peculiarities;
+
+
+    //              ----------------------------------------------------------------------------------
+                            // after the attributes, we define the CONSTRUCTOR
+    
+    public Dog( String passed_name , String passed_race , String passed_color){     //in the constructor, we need parameters
+                                                                                    //in this way we can assign the parameters value at the attributes
+
+        this.name = passed_name;                                //the key-word 'this' specifies we are selecting an attribute (or a method) in this current class
+                                                                // in 'this.name' (the attribute) we save the value in 'passed_name' (the parameter)
+        this.race = passed_race;
+        this.color = passed_color;
+
+        this.peculiarities = "none";                            // we want 'peculiarities' as an optional parameter. So we set it as "none" by default
+    }
+
+
+
+    //              ----------------------------------------------------------------------------------
+
+    
+                            // after the constructor, we define the METHODS
+                            // a good practice is define the attributes as 'private'
+                            // and then create the 'get' and 'set' methods to obtain access to the attribute values
+
+
+    public String get_name(){
+        return this.name;                                       //this method just return the attribute value
+    }                                                           // lets do the same for each attribute
+
+    public String get_race(){
+        return this.race;                           
+    }                                                           
+
+    public String get_color(){
+        return this.color;                           
+    } 
+
+    public String get_peculiarities(){
+        return this.peculiarities;                           
+    } 
+
+    //              ----------------------------------------------------------------------------------
+
+
+    public void set_name(String name){
+        this.name = name;                                       //this method just set the attribute value
+    }                                                           // lets do the same for each attribute
+
+    public void set_race(String race){
+        this.race = race;                           
+    }                                                           
+
+    public void set_color(String color){
+        this.color = color;                           
+    } 
+
+    public void set_peculiarities(String peculiarities){
+        this.peculiarities = peculiarities;                           
+    } 
+
+
+
+    //              ----------------------------------------------------------------------------------
+
+                            // now we can define the other methods
+
+    
+    public void bark(){
+        System.out.println("woof!");
+    }
+
+
+
+
+    //              ----------------------------------------------------------------------------------
+}

@@ -1,0 +1,102 @@
+import java.util.Scanner;
+
+public class Appointment {
+ 
+    
+/////////////////////////////////////// Attributes ////////////////////////
+
+
+
+    private String  day;                // day
+    private String  time;               // time
+    private Location  location;         // location
+    private Date  date;                 // date
+     
+  
+    
+/////////////////////////////////////// Constructor ////////////////////////
+
+
+    public Appointment(){
+
+        Scanner scan = new Scanner(System.in);
+
+
+        this.date = new Date();         // I initialize the Date value
+
+        this.location = new Location(); // I initialize the Location value
+
+        System.out.println("\n");
+        System.out.print("Enter the date day : ");
+        this.day = scan.nextLine();
+
+        System.out.println("\n");
+        System.out.print("Enter the date time : ");
+        this.time = scan.nextLine();
+
+    }
+
+
+    
+
+
+/////////////////////////////////////// GET ////////////////////////
+
+    public String getDay(){
+        return this.day;
+    }
+
+    public String getTime(){
+        return this.time;
+    }
+
+    public Location getLocation(){
+        return this.location;
+    }
+
+    public Date getDate(){
+        return this.date;
+    }
+
+    
+    
+/////////////////////////////////////// SET ////////////////////////
+
+
+    public void setDay( String day){
+        this.day = day;
+    }
+
+    public void setTime( String t){
+        this.time = t;
+    }
+
+    
+    public void setLocation( Location l){
+        this.location = l;
+    }
+
+    public void setDate( Date d){
+        this.date = d;
+    }
+
+
+       
+  
+    
+/////////////////////////////////////// Print ////////////////////////
+
+
+    public void printDate(){
+
+        System.out.print("\n");
+        System.out.print(this.getDay() + " " + this.getTime()); 
+        this.location.printInfo();
+        this.date.printInfo();
+        System.out.print("\n");
+        
+    }
+
+
+    
+}

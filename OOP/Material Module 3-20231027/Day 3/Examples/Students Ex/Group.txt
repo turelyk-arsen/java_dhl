@@ -1,0 +1,19 @@
+public class Group {
+
+    public static void main(String[] args) {
+
+        Student student1 = new Student();
+
+        student1.getInfo();
+        student1.getGrades();
+
+        student1.setInfo();
+        student1.setValuation();
+        student1.setValuation();
+        student1.setValuation();
+        
+        student1.getInfo();
+        student1.getGrades();
+    }
+    
+}

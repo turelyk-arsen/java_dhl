@@ -1,0 +1,214 @@
+import java.util.Scanner;
+
+/**
+ * Bank Balance. In this class we manage the client account
+ */
+
+
+
+
+public class Balance {
+    
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                                            // the balance info are private
+    private String name = "none";           // in this way they cannot be modified directly
+    private String surname = "none";
+    private String birthdate = "none";
+
+    private String username;                // in particular, username and password
+    private String password;                // are used in the login process
+
+    private boolean login = false;          // the attribute 'login' is setted as 'false' by default
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                                            // pswdModify() is a method used to modify the password
+    public String pswdModify(){             // I'll use it in the constructor
+
+        Scanner scan = new Scanner(System.in);
+        String password = "";
+        boolean allowed = false;
+
+        do {
+            System.out.println("\n");
+            System.out.print("Enter the new password: ");
+            
+            password = scan.nextLine();
+
+            if (password.length()>= 8){     // I check that the password length is 8 or more
+                allowed = true;
+            } else {
+                System.out.println("\n");
+                System.out.println("Password must be 8 characters or more ");
+            }
+            System.out.println("\n");
+        } while (!allowed);
+
+        return password;                    // If the password is allowed, it is returned
+    }
+
+
+
+
+
+
+    public void setInfo(){                  // setInfo() is used to modify the user infos
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("\n");
+        System.out.print("Enter the your name: ");
+        this.name = scan.nextLine();
+
+        System.out.println("\n");
+        System.out.print("Enter the your surname: ");
+        this.surname = scan.nextLine();
+
+        System.out.println("\n");
+        System.out.print("Enter the your birth date: ");
+        this.birthdate = scan.nextLine();
+
+    }
+
+
+
+
+
+
+    public Balance(){                  // Balance() is the constructor
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("\n");
+        System.out.print("Enter the new username: ");
+        this.username = scan.nextLine();    // I set the username
+
+        this.password = pswdModify();       // I use pswdModify() method to set the password
+
+        System.out.println("\n");
+        System.out.print("If you want to set the user info, enter 'yes':  ");
+        String answer = scan.nextLine();    // I check if the user wants to enter his info
+
+        if(answer.equals("yes")){
+            setInfo();                      // if 'yes', I use setInfo()
+        }
+        System.out.println("\n");
+    }
+
+
+
+
+                                            // the login() method can modify the attribute 'login'
+                                            // in this way the user can log in
+    public void login(){
+        
+        Scanner scan = new Scanner(System.in);
+
+        boolean correct = false;            // by default the credentials are not correct
+
+        
+        System.out.println("\n");
+        System.out.print("If you want to login, enter 'yes':  ");
+        String answer = scan.nextLine();    // I check if the user wants to login
+
+        if(answer.equals("yes")){
+                                            // if 'yes', I ask for username and password
+            System.out.println("\n");
+            System.out.print("Enter the username:  ");
+            String temp_username = scan.nextLine();
+
+            if ( temp_username.equals(this.username) ) {
+
+                System.out.println("\n");
+                System.out.print("Enter the password:  ");
+                String temp_password = scan.nextLine();
+
+                if ( temp_password.equals(this.password) ){
+                    correct = true;         // if both username and password are correct, 'correct' becomes true
+
+                } else  {
+                                            // in this case username is correct, but the password is wrong
+                
+                    System.out.println("uncorrect password ");  
+                    System.out.println("LogIn Failed ");
+                    System.out.println("\n");
+
+                }
+
+
+            } else {                        // if the username is not correct, I don't ask for the password
+
+                System.out.println("uncorrect username ");  
+                System.out.println("LogIn Failed "); 
+                System.out.println("\n");
+            }
+        
+        }
+
+        if ( correct ) {                    // the attribute 'login' change according to the 'correct' value
+            this.login = true;
+            System.out.println("\n");
+            System.out.println("LogIn Allowed ");
+            System.out.println("You have logged in successfully");
+        }
+
+        System.out.println("\n");
+
+    }
+    
+
+
+
+
+                                            // the logout() method can modify the attribute 'login'
+                                            // in this way the user can log out
+    public void logout(){
+        
+        Scanner scan = new Scanner(System.in);
+
+        if (this.login) {                       // I check if the user is actually logged in
+            System.out.println("\n");
+            System.out.print("If you want to logout, enter 'yes':  ");
+            String answer = scan.nextLine();    // I check if the user wants to logout
+
+            if(answer.equals("yes")) {
+                this.login = false;
+                    
+                System.out.println("\n");
+                System.out.println("LogOut Allowed ");
+                System.out.println("You have logged out successfully");
+            }
+
+        } else {
+            System.out.print("You are not logged in ");
+        }
+        
+        System.out.println("\n");
+    }
+
+
+
+
+
+
+
+
+
+    public static void main(String[] args) {
+        
+        Balance balance = new Balance();
+
+        balance.login();
+
+        balance.logout();
+
+
+    }
+    
+
+}

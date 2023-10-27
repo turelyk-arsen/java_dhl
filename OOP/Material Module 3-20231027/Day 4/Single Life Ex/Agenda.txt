@@ -1,0 +1,93 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Agenda
+ */
+
+
+public class Agenda {
+
+    // list of appointments
+
+    private List <Appointment> agenda = new ArrayList<Appointment>() ;
+
+
+    
+
+
+    /////////////////////////////////////// ADD new appointment ////////////////////////
+
+
+    public void add(){
+
+        System.out.println("\n");
+        System.out.println("You are creating a new date! ");
+        System.out.println("Write down all the info and remenber... ");
+        System.out.println(" ... to have FUN! ");
+        Appointment a = new Appointment();      // I create a new temporary appointment
+
+        this.agenda.add(a);                     // and I add it in the agenda list
+
+    }
+
+
+    /////////////////////////////////////// SHOW all the appointments ////////////////////////
+
+
+    public void show(){
+
+        if (this.agenda.isEmpty()){
+            System.out.println("\n");
+            System.out.println("You have not dates yet! ");
+        } else {
+
+            for (int i = 0; i < this.agenda.size(); i++) {
+                this.agenda.get(i).printDate();
+            }
+        }
+    }
+
+
+    
+
+    /////////////////////////////////////// SHOW the appointments at a specific day ////////////////////////
+
+
+    public void showDay( String day ){
+
+        if (this.agenda.isEmpty()){
+            System.out.println("\n");
+            System.out.println("You have not dates yet! ");
+        } else {
+
+            for (int i = 0; i < this.agenda.size(); i++) {
+                if (this.agenda.get(i).getDay().equals(day)){   // if match found
+                    this.agenda.get(i).printDate();             // I print it
+                }
+            }
+        }
+    }
+
+
+    /////////////////////////////////////// SHOW the appointments at a specific person ////////////////////////
+
+
+    public void showPerson( String person ){
+
+        if (this.agenda.isEmpty()){
+            System.out.println("\n");
+            System.out.println("You have not dates yet! ");
+        } else {
+
+            for (int i = 0; i < this.agenda.size(); i++) {
+                if (this.agenda.get(i).getDate().getName().equals(person)){   // if match found
+                    this.agenda.get(i).printDate();             // I print it
+                }
+            }
+        }
+    }
+
+
+    
+}

@@ -1,0 +1,112 @@
+import java.util.Scanner;
+
+public class Date {
+
+       
+  
+    
+/////////////////////////////////////// Attributes ////////////////////////
+
+
+
+    private String name ; 
+    private String gender ; 
+    private String tel ;
+    private String address ;
+
+
+       
+  
+    
+/////////////////////////////////////// Constructor ////////////////////////
+
+
+
+    public Date(){
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("\n\n");
+        System.out.print("Enter the date name : ");
+        this.name = scan.nextLine();
+
+        System.out.println("\n");
+        System.out.print("Enter the date tel number : ");
+        this.tel = scan.nextLine();
+
+        this.gender = "who cares!";
+        this.address = "Somewhere?";
+
+    }
+
+
+
+
+/////////////////////////////////////// GET ////////////////////////
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getGender(){
+        return this.gender;
+    }
+
+    public String getTel(){
+        return this.tel;
+    }
+
+    public String getAddress(){
+        return this.address;
+    }
+    
+  
+    
+/////////////////////////////////////// SET ////////////////////////
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setGender(String g){
+        this.gender = g;
+    }
+
+    public void setTel(String tel){
+        this.tel = tel;
+    }
+
+    public void setAddress(String a){
+        this.address = a;
+    }
+
+       
+  
+    
+/////////////////////////////////////// Print ////////////////////////
+
+    public void printName(){
+        System.out.print( this.getName());
+    }
+
+    public void printTel(){
+        System.out.print( this.getTel());
+    }
+
+    public void printAddress(){
+        System.out.print( this.getAddress());
+    }
+
+    public void printGender(){
+        System.out.print( this.getGender());
+    }
+
+    public void printInfo(){
+        System.out.print("\n");
+        System.out.print("Name : " + this.getName() + " , gender : " + this.getGender()); 
+        System.out.print("\n");
+        System.out.print("Tel : " + this.getTel() + " , address : " + this.getAddress()); 
+    }
+
+    
+  
+}

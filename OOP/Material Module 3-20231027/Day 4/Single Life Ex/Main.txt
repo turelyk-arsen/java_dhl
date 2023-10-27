@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        
+        Agenda myAgenda = new Agenda();
+
+        Scanner scan = new Scanner(System.in);
+        String answer = "";
+        String day = "";
+        String person = "";
+        boolean running = true;
+
+        do {
+            
+            System.out.println("\n\n");
+            System.out.println(" 1 - Add a Date");
+            System.out.println(" 2 - Show all the Dates");
+            System.out.println(" 3 - Show the Dates in a day");
+            System.out.println(" 4 - Show the Dates with a person");
+            System.out.println(" 5 - Exit");
+            System.out.println("");
+            System.out.print("Enter the option number : ");
+
+            answer = scan.nextLine();
+
+            switch (answer) {
+                case "1":
+                    // selected option 1
+                    myAgenda.add();
+                    break;
+
+                case "2":
+                    // selected option 2
+                    myAgenda.show();
+                    break;
+
+                case "3":
+                    // selected option 3
+                    System.out.println("\n");
+                    System.out.print("Enter the day : ");
+                    day = scan.nextLine();
+                    myAgenda.showDay(day);
+                    break;
+
+                case "4":
+                    // selected option 4
+                    System.out.println("\n");
+                    System.out.print("Enter the person : ");
+                    person = scan.nextLine();
+                    myAgenda.showPerson(person);
+                    break;
+                    
+                case "5":
+                    // selected option 5
+                    running = false;
+                    break;
+            
+                default:
+                    // wrong option
+                    System.out.println("\n");
+                    System.out.println("Option is wrong. Try again ");
+                    break;
+            }
+
+
+
+        } while (running);
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+    
+}

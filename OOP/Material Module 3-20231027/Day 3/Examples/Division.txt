@@ -1,0 +1,88 @@
+
+/**
+ * Division Exceptions
+ */
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+public class Division {
+
+
+        // function with a not handled exception
+    public static void division_not_handled( ){
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print( "Enter the first number: " );
+        double x = scanner.nextDouble();
+
+        System.out.println( "\n" );
+        System.out.print( "Enter the first number: " );
+        double y = scanner.nextDouble();
+
+        System.out.println( "The result is " + (x / y) );
+    }
+
+    
+        // function with a handled possible unknown exception           
+    public static void division_handled() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print( "Enter the first number: " );
+            double x = scanner.nextDouble();
+
+            System.out.println( "\n" );
+            System.out.print( "Enter the first number: " );
+            double y = scanner.nextDouble();
+        
+            System.out.println( "The result is " + (x / y) );
+
+        } catch (Exception e) {         // in this case we handle every possible exception
+
+            System.out.println( "Division not allowed" ); 
+        }
+
+    }
+
+
+        // function with a handled possible known exception 'InputMismatchException'         
+    public static void division_input_handled() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print( "Enter the first number: " );
+            double x = scanner.nextDouble();
+
+            System.out.println( "\n" );
+            System.out.print( "Enter the first number: " );
+            double y = scanner.nextDouble();
+        
+            System.out.println( "The result is " + (x / y) );
+
+        } catch (InputMismatchException e) {        // in this case we handle a specific type of exception
+
+            System.out.println( "You must enter a number \n" ); 
+        }
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println( "\n\n\n" );
+
+        // division_not_handled();
+
+        // division_handled();
+
+        // division_input_handled();
+
+
+        System.out.println( "\n\n\n" );        
+    }
+
+    
+}

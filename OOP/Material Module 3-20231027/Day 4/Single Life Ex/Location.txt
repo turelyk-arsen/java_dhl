@@ -1,0 +1,116 @@
+import java.util.Scanner;
+
+public class Location {
+      
+  
+    
+/////////////////////////////////////// Attributes ////////////////////////
+
+
+
+
+    private String l_name ;
+    private String l_address ;
+    private String l_mark ;
+    private String note ;
+
+
+    
+       
+  
+    
+/////////////////////////////////////// Constructor ////////////////////////
+
+
+
+    public Location(){
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("\n\n");
+        System.out.print("Enter the location name : ");
+        this.l_name = scan.nextLine();
+
+        System.out.println("\n");
+        System.out.print("Enter the location address : ");
+        this.l_address = scan.nextLine();
+
+        this.l_mark = "no marks" ;
+        this.note = "no notes" ;
+    }
+
+    
+
+
+/////////////////////////////////////// GET ////////////////////////
+
+    public String getName(){
+        return this.l_name;
+    }
+
+    public String getMark(){
+        return this.l_mark;
+    }
+
+    public String getNote(){
+        return this.note;
+    }
+
+    public String getAddress(){
+        return this.l_address;
+    }
+
+   
+/////////////////////////////////////// SET ////////////////////////
+
+    public void setName(String name){
+        this.l_name = name;
+    }
+
+    public void setMark(String m){
+        this.l_mark = m;
+    }
+
+    public void setNote(String n){
+        this.note = n;
+    }
+
+    public void setAddress(String a){
+        this.l_address = a;
+    }
+
+      
+  
+
+/////////////////////////////////////// Print ////////////////////////
+
+    public void printName(){
+        System.out.print( this.getName());
+    }
+
+    public void printMark(){
+        System.out.print( this.getMark());
+    }
+
+    public void printAddress(){
+        System.out.print( this.getAddress());
+    }
+
+    public void printNote(){
+        System.out.print( this.getNote());
+    }
+
+    public void printInfo(){
+        System.out.print("\n");
+        System.out.print("Location : " + this.getName() + " , address : " + this.getAddress()); 
+        System.out.print("\n");
+        System.out.print("Marks : " + this.getMark() + " , notes : " + this.getNote()); 
+    }
+
+
+
+
+
+
+
+    
+}

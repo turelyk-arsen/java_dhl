@@ -1,0 +1,61 @@
+
+
+// in this file we use the class 'Dog'
+// the file 'Dog.java' is in the same folder, so it is automatically found
+
+
+public class MainDog {
+
+    public static void main(String[] args) {
+
+                // first, we create the instance 
+                // we create it using the constructor and passing the attributes values as parameters
+
+        Dog fuffy = new Dog("fuffy", "dalmatian", "white and black");
+
+
+        System.out.println( "\n" );
+
+                // we can check the values using the 'get' methods
+        System.out.println( fuffy.get_name() );
+        System.out.println( fuffy.get_race() );
+        System.out.println( fuffy.get_color() );
+        System.out.println( fuffy.get_peculiarities() );      
+        
+        
+                // we can modify the values using the 'set' methods
+        
+        fuffy.set_name("fuffy the first");
+        fuffy.set_color("white with many black dots");
+        fuffy.set_peculiarities("100 brothers and sisters");
+
+        
+
+        System.out.println( "\n" );
+
+
+                // we can check them again
+        System.out.println( fuffy.get_name() );
+        System.out.println( fuffy.get_race() );
+        System.out.println( fuffy.get_color() );
+        System.out.println( fuffy.get_peculiarities() );      
+
+
+
+        System.out.println( "\n" );
+
+
+                // we can also use the other methods
+        fuffy.bark();
+
+
+        
+        System.out.println( "\n\n\n\n\n" );
+
+    }
+
+
+
+
+    
+}
