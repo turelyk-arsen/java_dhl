@@ -1,0 +1,166 @@
+/**
+ * Day4 exercise 2 : The All You Can Eat
+ */
+
+
+import java.util.Scanner;
+
+public class Day4ex2 {
+
+
+
+                            // ---------------  !!!!!   Show Menu    !!!!!   ---------------  
+
+    public static void showMenu(String[] menu){         // I pass an array as parameter
+                                                        // this array contains all the dishes
+        System.out.println("This is the menu");
+
+        for (int i = 0; i < menu.length; i++) {   
+            System.out.println(menu[i]);                // I just print on the screen all the elements in the menu
+        }
+        System.out.println("\n");
+    }
+
+
+
+
+
+
+
+
+
+
+                            // ---------------  !!!!!  GET the single DISH   !!!!!   --------------- 
+
+    public static String getDish(){
+        Scanner dishScan = new Scanner(System.in);
+        System.out.println("\n");
+        System.out.print("Enter the dish: ");
+
+        return dishScan.nextLine();                     // I return the entered dish, even if it's not in the menu
+                                                        // I will check if the dish is in the menu in the getOrder() function
+    }
+
+
+
+
+
+
+
+
+
+
+                            // ---------------  !!!!!  SHOW the ENTIRE ORDER   !!!!!   --------------- 
+
+    public static void showOrder(String order[]){       // The order is an array of Strings
+        System.out.println("This is your orther: ");
+
+        for (int i = 0; i < order.length; i++) {
+            System.out.println(order[i]);               // I just print on the screen all the elements in the order
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    
+                            // ---------------  !!!!!  ASK for a new DISH   !!!!!   --------------- 
+
+    public static void getOrder(String[] menu){         // I pass an array as parameter
+                                                        // this array contains all the dishes
+        Scanner askScan = new Scanner(System.in);
+
+        String order[] = {"","","","","","","","","",""};   // At beginning the order has 10 empty strings
+
+        int counter = 0;                                // I'll use this counter to determine the current position in the order array
+
+        String newDish = "";
+
+        boolean found = false;                          // 'found' variable is used to determine if the requested dish is in the menu
+
+        String answer = "";                             // here I save the user answer, that must be y , Y , n or N
+
+        for (int i = 0; i < 10; i++) {                  //I use a loop to repeat 10 times because I can enter max 10 dishes in 1 order
+            System.out.println("\n");
+
+            System.out.print("Do you want to add a new dish? [y/n]: ");
+            answer = askScan.nextLine();                // I'm saving the entered answer
+            System.out.println("");
+
+            if (answer.equals("y") || answer.equals("Y")) { //in this main if I check the answer value
+                System.out.print("Enter the dish name: ");
+                newDish = getDish();                    // In this case the answer is 'y' or 'Y', so I get the new dish
+
+                found = false;                          // I want to be sure that the 'found' value is FALSE
+                                                        // Because in the next for loop 'found' may change
+                for (int j = 0; j < menu.length; j++){
+                    if(newDish.equals(menu[j])){        // I check if the entered dish is in the menu
+                        found = true;                   // if it is there, 'found' becomes TRUE
+                    }
+                }
+
+                if (found){                             // if 'found' is TRUE, the entered dish is in the menu
+                    order[counter] = newDish;           //so I put the entered dish in the order array at 'counter' position
+                    counter++;                          // and I increase 'counter'. Now it is ready for a new entered dish
+                } else {
+                    System.out.println("Dish not recognised ");
+                    i--;                                // if the dish is not correct, I decrease 'i' to repeat the current passage
+                }
+            } else {
+                                                        // In this case the answer is 'n' or 'N', so I stop to get new dishs
+                if (answer.equals("n") || answer.equals("N")) {
+                    System.out.println("You are ready to send the order");  
+                    i=10;                               // if the answer is 'n', I stop the loop setting i to 10
+
+                        
+                } else {                                // In this case the answer is not allowed
+                    System.out.println("Answer not recognised ");
+                    i--;                                // if the answer is neither 'y' nor 'n', I decrease 'i' to repeat the current passage
+                }
+
+            }                                           // end of the main if    
+            
+        }                                               // end of the for loop 
+
+                                                        // if the for loop ends, the order is complete
+        showOrder(order);                               // I use showOrder() function to show the resulting order
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                            // ---------------  !!!!!  MAIN   !!!!!   --------------- 
+
+
+    public static void main(String[] args) {
+
+        
+        
+                                                        // Menu Creation
+        String menu[] = {"salmon nigiri","tuna nigiri","salmon maki","tuna maki","avocado maki"};
+
+
+
+
+        
+
+                                                        
+    }                                                   // END OF THE MAIN
+    
+}

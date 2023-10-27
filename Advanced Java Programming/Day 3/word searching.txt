@@ -1,0 +1,59 @@
+
+import java.util.Scanner; 
+import java.util.Arrays;
+import java.util.Collections;
+
+public class practice {
+
+   
+    public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Enter the phrase");
+
+        String phrase = scan.nextLine();
+
+        System.out.println("Enter the word you are looking for ");
+
+        String word = scan.nextLine();
+
+        char lettersPhrase[] = phrase.toCharArray();
+
+        char lettersWord[] = word.toCharArray();
+
+        int currentLetter = 0;
+
+        boolean found = false;
+       
+        for (int i = 0; i < lettersPhrase.length; i++) {
+            if (lettersPhrase[i] == lettersWord[0]){
+                currentLetter = 0;
+                for (int j = i; j < lettersWord.length + i; j++) {
+
+                    if (lettersPhrase[j] == lettersWord[currentLetter]) {
+                        found = true;
+                        currentLetter++;
+                    } else {
+                        found = false;
+                        j = lettersWord.length + i;
+                    }
+                }
+            }
+            if (found == true){
+                i = lettersPhrase.length;
+                System.out.println("The word "+word+" is found.");
+            }
+        }
+
+        if (found == false){
+            System.out.println("The word "+word+" is NOT found.");
+        }
+        
+
+        System.out.println("\n\n\n\n\n");
+
+        System.out.println("program is over ");
+    }
+
+}

@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class login {
+
+    public static void getText(String text){
+        Scanner text_scan = new Scanner(System.in);
+        String entered;
+        do {
+            System.out.print(" Enter the correct value:  ");
+
+            entered = text_scan.nextLine();
+            
+        } while (!entered.equals(text));
+    }
+
+    
+    public static String askOP(){
+        Scanner op_scan = new Scanner(System.in);
+        String op;
+        do {
+            System.out.println(" Enter the operation name ('logout' or 'change'): ");
+            op = op_scan.nextLine(); 
+        } while (!op.equals("logout") && !op.equals("change"));
+        return op;
+    }
+
+    public static String modifyPW(){
+        Scanner text_scan = new Scanner(System.in);
+        System.out.print(" Enter a new password:  ");
+        return text_scan.nextLine();
+    }
+    
+    public static void login_function( String username , String pw){
+
+        String op;
+
+        do {
+            System.out.println(" Username  ");
+            getText(username);
+            System.out.println(" Password  ");
+            getText(pw);
+
+            do {
+                op = askOP();
+
+                if (op.equals("change")){
+                    pw = modifyPW();
+                }
+                
+            } while (op.equals("change")); 
+
+	// this is an endless loop
+        } while (true);
+
+    }
+
+
+
+    public static void main(String[] args) {
+
+        login_function("fra", "amazing");
+        
+    }
+
+}

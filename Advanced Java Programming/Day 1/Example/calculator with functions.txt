@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+
+public class calcFunctions {
+
+    public static void menu(){
+        // I ask the operation
+        System.out.println(" + addition ");
+        System.out.println(" - subtraction ");
+        System.out.println(" * multiplication ");
+        System.out.println(" / division ");
+        System.out.println(" to exit write 'end' ");
+    }
+
+    public static String askOP(){
+        Scanner op_scan = new Scanner(System.in);
+        String op;
+        do {
+            System.out.println(" Enter the operation symbol: ");
+            op = op_scan.nextLine(); 
+        } while (!op.equals("+") && !op.equals("-") && !op.equals("*") && !op.equals("/") && !op.equals("end"));
+        return op;
+    }
+
+    public static int getNumber(){
+        Scanner num_scan = new Scanner(System.in);
+
+        System.out.println("Enter a integer number: ");
+        return num_scan.nextInt();
+    }
+
+    public static double getResult(String operation , int n1 , int n2){
+
+        // I check the operation 
+        switch (operation) {
+            case "+":
+                // I get the result
+                return n1 + n2 ;
+            case "-":
+                // I get the result
+                return n1 - n2 ;
+            case "*":
+                // I get the result
+                return n1 * n2 ;
+            case "/":
+                return n1 / n2 ;
+
+            default:
+                return -1;
+        }
+    }
+
+
+    public static void calc(){
+
+        String op;
+        int n1 ;
+        int n2 ;
+        do {
+            menu();
+            op = askOP();
+            if (!op.equals("end")){
+                System.out.println(" Enter the first value ");
+                n1 = getNumber();
+                System.out.println(" Enter the second value ");
+                n2 = getNumber();
+                System.out.println(" The result is: ");
+                System.out.println( getResult(op, n1, n2)); 
+            }
+        } while (!op.equals("end"));
+        
+
+    }
+
+
+    public static void main(String[] args) {
+
+        calc();
+        
+    }
+    
+}

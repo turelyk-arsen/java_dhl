@@ -1,0 +1,224 @@
+import java.util.Scanner;
+
+/**
+ * Java Course - Module 2 
+ * Final Project - Sudoku 
+ */
+
+
+
+
+
+
+public class Sudoku {
+
+
+
+
+
+
+        // ---------------------------------- !!!!!!!!!!   Grid creation!   !!!!!!!!!! ---------------------------------- 
+
+
+
+                                                                    // This function generates a grid made with 9 matrises 
+                                                                    // each matrix has 3 arrays
+                                                                    // each array has 3 integers
+    public static int[][][] setGrid(){
+
+        int matrix0[][] = {new int[3] , new int[3] , new int[3]};
+        
+        int matrix1[][] = {new int[3] , new int[3] , new int[3]};
+
+        int matrix2[][] = {new int[3] , new int[3] , new int[3]};
+
+        int matrix3[][] = {new int[3] , new int[3] , new int[3]};
+
+        int matrix4[][] = {new int[3] , new int[3] , new int[3]};
+
+        int matrix5[][] = {new int[3] , new int[3] , new int[3]};
+
+        int matrix6[][] = {new int[3] , new int[3] , new int[3]};
+
+        int matrix7[][] = {new int[3] , new int[3] , new int[3]};
+
+        int matrix8[][] = {new int[3] , new int[3] , new int[3]};
+
+        int grid[][][] = {matrix0 ,matrix1 , matrix2 , matrix3 , matrix4 , matrix5 , matrix6 , matrix7 , matrix8};
+
+                                                    /*  the resulting grid is made in this way
+                                                    * 
+                                                    *  matrix0         matrix1         matrix2 
+                                                    * 
+                                                    * 
+                                                    * 
+                                                    *  matrix3         matrix4         matrix5 
+                                                    * 
+                                                    * 
+                                                    *  
+                                                    *  matrix6         matrix7         matrix8 
+                                                    * 
+                                                    */
+
+        return grid;                                                // the function return the grid
+
+    }
+
+
+
+
+
+
+
+
+        // ---------------------------------- !!!!!!!!!!   Show the 3 elements in a single array!   !!!!!!!!!! ---------------------------------- 
+
+
+
+                                                                    // This function just print an array made with 3 integers
+    public static void getArray( int[]array){
+        for (int i = 0; i < 3; i++) {
+                if (array[i]==0) {
+                    System.out.print(" | " + " ");
+                } else {
+                    System.out.print(" | " + array[i]);
+                }
+                
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+        // ---------------------------------- !!!!!!!!!!   Show the Portion of Sudoku!   !!!!!!!!!! ---------------------------------- 
+
+
+
+                                                                    // This function just print a portion of grid made with 1 matrix 
+                                                                    // the matrix has 3 arrays
+                                                                    // each array has 3 integers
+    public static void getPortion( int[][] matrix){
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("\n\n\n");
+            getArray(matrix[i]);
+        }
+    }
+
+
+
+
+
+        // ---------------------------------- !!!!!!!!!!   Show the entire sudoku GRID !   !!!!!!!!!! ---------------------------------- 
+
+
+
+                                                                    // This function just print sudoku grid 
+    public static void getGrid( int[][][] matrix){
+
+        int sectionCounter = 0;
+
+        System.out.println("\n\n\n");
+
+        for (int k = 0; k < 3; k++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = sectionCounter; j < sectionCounter+3; j++) {
+                    getArray(matrix[j][i]);
+                } 
+                System.out.println("\n ------------------------------------");
+            }
+            sectionCounter += 3;            
+        }
+    }
+
+
+        // ---------------------------------- !!!!!!!!!!   Automatical Population of a Portion of Sudoku!   !!!!!!!!!! ---------------------------------- 
+
+
+
+                                                                    // This function populate a portion of grid made with 1 matrix 
+                                                                    // the matrix has 3 arrays
+                                                                    // each array has 3 integers
+                                                                    // The user can put all the values 
+    public static int[][] setPortion( int[][] matrix , int number1 , int number2 , int number3 , int number4 , int number5 , int number6 , int number7 , int number8 , int number9 ){
+
+        matrix[0][0] = number1;
+        matrix[0][1] = number2;
+        matrix[0][2] = number3;
+        matrix[1][0] = number4;
+        matrix[1][1] = number5;
+        matrix[1][2] = number6;
+        matrix[2][0] = number7;
+        matrix[2][1] = number8;
+        matrix[2][2] = number9;
+
+        return matrix;
+
+    }
+
+
+
+    
+
+
+
+
+
+        // ---------------------------------- !!!!!!!!!!   Sudoku creation!   !!!!!!!!!! ---------------------------------- 
+
+
+
+                                                                    // This function populate a grid made with 9 matrises 
+                                                                    // each matrix has 3 arrays
+                                                                    // each array has 3 integers
+    public static int[][][] setSudoku( int[][][] grid , int[][] portion0 , int[][] portion1 , int[][] portion2 , int[][] portion3 , int[][] portion4 , int[][] portion5 , int[][] portion6 , int[][] portion7 , int[][] portion8  ){
+
+
+        grid[0] = portion0;
+        grid[1] = portion1;
+        grid[2] = portion2;
+        grid[3] = portion3;
+        grid[4] = portion4;
+        grid[5] = portion5;
+        grid[6] = portion6;
+        grid[7] = portion7;
+        grid[8] = portion8;
+
+        return grid;                                                // the function return the populated grid
+    }
+
+
+
+
+
+
+    public static void main(String[] args) {
+
+        int[][][] grid = setGrid();
+
+                                                                    // here I populate the sudoku grid followiong the sections order. NOT the lines order
+
+        grid = setSudoku(grid, setPortion(grid[0] , 0 , 0 , 0 , 0 , 8 , 0 , 2 , 6 , 0) ,
+                               setPortion(grid[1] , 9 , 2 , 8 , 7 , 0 , 3 , 0 , 0 , 5) ,
+                               setPortion(grid[2] , 1 , 0 , 0 , 0 , 2 , 4 , 0 , 7 , 0) ,
+                               setPortion(grid[3] , 0 , 9 , 0 , 0 , 1 , 0 , 3 , 0 , 0) ,
+                               setPortion(grid[4] , 1 , 0 , 7 , 0 , 0 , 6 , 0 , 8 , 0) ,
+                               setPortion(grid[5] , 2 , 0 , 0 , 0 , 4 , 7 , 0 , 9 , 1) ,
+                               setPortion(grid[6] , 0 , 2 , 8 , 0 , 0 , 6 , 0 , 0 , 5) ,
+                               setPortion(grid[7] , 5 , 4 , 0 , 8 , 3 , 1 , 0 , 7 , 0) ,
+                               setPortion(grid[8] , 0 , 0 , 6 , 7 , 5 , 0 , 0 , 0 , 0));
+
+        
+        getGrid(grid);
+
+        
+    }
+
+    
+}

@@ -1,0 +1,150 @@
+/**
+ * Day4 exercise 1 : The Small Shop
+ */
+
+import java.util.Scanner;
+
+public class Day4ex1 {
+
+                        // ---  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ---  
+
+    // getPrice() is the function used to GET the NEXT PRICE!!!
+    public static double getPrice(){
+        Scanner priceScan = new Scanner(System.in);
+        System.out.println("\n");
+        System.out.print("Enter the next product price: ");
+        return priceScan.nextDouble();
+    }
+
+
+
+
+
+
+                        // ---  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ---   
+
+    // getDiscount() is the function used to APPLY the DISCOUNT TO the PRICE!!!
+    public static double getDiscount( double price ){
+        Scanner discScan = new Scanner(System.in);
+        System.out.println("\n");
+        
+        String answer = ""; // here I save the user answer, that must be y , Y , n or N
+        boolean repeat = false; // if the answer is not allowed, the request will be repeated
+            // by default the repeat value is FALSE, so I suppose tha answer is allowed
+        do {
+            System.out.print("Do you want to apply a discout? [y/n]: ");
+            answer = discScan.nextLine();
+            System.out.println("");
+            repeat = false; // I want to be sure that 'repeat' is false at the beginning
+            if (answer.equals("y") || answer.equals("Y")) {
+
+                System.out.print("Enter the % of discount: ");
+                price = (price*(100 - discScan.nextDouble())/100);
+                    // I update the price applying the discount if the answer is 'y' or 'Y'
+            } else {
+                if (!answer.equals("n") && !answer.equals("N")) {
+                    repeat = true; // if the answer is neither 'y' nor 'n', 'repeat' is true
+                } 
+            }            
+        } while (repeat); // I repeat the loop only if repeat is true
+        return price; // I return the price in any case
+    }
+
+
+    
+
+
+
+
+
+                        // ---  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ---   
+
+    // ask() is the function used to ASK FOR a NEW PRICE!!!
+    public static double askPrice(){
+        Scanner askScan = new Scanner(System.in);
+
+        double newPrice = -1;
+        System.out.println("\n");
+        String answer = "";
+        boolean repeat = false;// if the answer is not allowed, the request will be repeated
+            // by default the repeat value is FALSE, so I suppose tha answer is allowed
+
+        do {
+            System.out.print("Do you want to enter a new product price? [y/n]: ");
+            answer = askScan.nextLine();
+            System.out.println("");
+            repeat = false; // I want to be sure that 'repeat' is false at the beginning
+            if (answer.equals("y") || answer.equals("Y")) {
+                newPrice = getDiscount(getPrice()); // I use getPrice() to get the new price
+                                                    // and I immediatly apply the discount using getDiscount() function
+            } else {
+                if (!answer.equals("n") && !answer.equals("N")) {
+                    repeat = true; // if the answer is neither 'y' nor 'n', 'repeat' is true
+                } 
+            }            
+        } while (repeat); // I repeat the loop only if repeat is true
+        return newPrice; // I return the price in any case, even if it is still -1
+                        // if it is still -1, the user entered 'n'
+    }
+
+
+
+
+    
+
+                            // ---  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  --- 
+
+    // getBill() is the main function used at the very beginning!!!
+    // I'll repeat this function in the main using a do-while after showing the total cost
+    public static void getBill(){
+        
+        double total = 0;
+        double newPrice = -1;
+        boolean repeat = false; // if I want to enter a new price , repeat will change in 'true'
+            // by default the repeat value is FALSE, so I suppose that I don't want to enter a new price
+
+        System.out.println(" NEW CUSTOMER BILL ");
+        total = getDiscount(getPrice()); // I use getPrice() to get the first price
+                                         // and I immediatly apply the discount using getDiscount() function
+        do {
+            newPrice = askPrice(); // I use askPrice() to ask if the user want to enter a new price
+                                    // if newPrice returned by askPrice() is -1, 
+                                    // the user doesn't want to enter a new price
+            if (newPrice!=-1) { 
+                total+= newPrice;   // I add the new price at the total
+                repeat = true;      //  'repeat' becomes true
+            } else{
+                repeat = false;     // else, if the newPrice returned by askPrice() is -1
+                                    // 'repeat' becomes false
+            }
+
+        } while (repeat); // I repeat the loop only if repeat is true
+
+        System.out.println("The total is: " + total + "\n\n\n");
+            // I print the total value and end the function
+    }
+
+
+
+
+
+
+
+    
+
+                            // ---  !!!!!!!!!!!!!!!!!!!!!!!!!!!!  MAIN   !!!!!!!!!!!!!!!!!!!!  --- 
+                              
+
+
+
+    public static void main(String[] args) {
+
+        // in the main I just call the getBill() function infinite times
+        while (true) {
+            getBill();  // the entire process is done by this function
+        }
+
+    }
+
+    
+}
